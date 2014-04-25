@@ -1,0 +1,4 @@
+Django==1.6.1
+ipdb==0.8
+ipython==1.2.1
+wsgiref==0.1.2
