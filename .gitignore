@@ -1,3 +1,5 @@
 *.pyc
 .idea
 .DS_Store
+.sass-cache
+*.sqlite3
