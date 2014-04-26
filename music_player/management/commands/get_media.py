@@ -3,7 +3,7 @@ import os
 from django.conf import settings
 from django.core.management.base import BaseCommand
 
-from core.models import Audio
+from music_player.models import Audio
 
 MEDIA_ROOT = settings.MEDIA_ROOT
 AUDIO_FORMATS = ('mp3',)

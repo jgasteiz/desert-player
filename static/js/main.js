@@ -28,7 +28,7 @@ mplayer.app.config(['$routeProvider', function($routeProvider) {
 
 mplayer.app.service('SongsService', ['$resource', function($resource) {
 
-	var Songs = $resource('/_api/audio/');
+	var Songs = $resource('/_api/songs/');
 
 	return {
 		Songs: Songs
@@ -38,7 +38,7 @@ mplayer.app.service('SongsService', ['$resource', function($resource) {
 mplayer.app.controller('AppCtrl', ['$scope', '$location', function($scope, $location) {
 	$scope.isActive = function(route) {
 		return route === $location.path();
-	}
+	};
 }]);
 
 mplayer.app.controller('HomeCtrl', ['$scope', function($scope) {
@@ -56,4 +56,20 @@ mplayer.app.controller('AlbumsCtrl', ['$scope', function($scope) {
 mplayer.app.controller('SongsCtrl', ['$scope', 'SongsService', function($scope, SongsService) {
 	$scope.title = 'This is songs';
 	$scope.songs = SongsService.Songs.query();
+
+	$scope.onPlay = 'Nothing yet.'
+	$scope.play = function(songTitle) {
+		$scope.onPlay = songTitle;
+	};
 }]);
+
+mplayer.app.directive('player', function() {
+	return {
+		restrict: 'E',
+		scope: {
+			title: '@',
+			src: '@'
+		},
+		template: '<audio src="{{src}}" controls></audio>'
+	}
+})

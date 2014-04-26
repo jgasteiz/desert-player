@@ -1,4 +1,7 @@
 <h1>{{ title }}</h1>
+<h2>Playing: {{ onPlay }}</h2>
 <ul>
-	<li ng-repeat="song in songs">{{ song }}</li>
+	<li ng-repeat="song in songs" ng-click="play(song.title)">
+		<span>{{ song.title }}</span>
+	</li>
 </ul>

@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 
 class Audio(models.Model):
@@ -7,3 +8,6 @@ class Audio(models.Model):
 
     def __unicode__(self):
         return self.title
+
+    def get_audio_url(self):
+        return '%s%s/%s' % (settings.MEDIA_URL, self.path, self.title)
