@@ -4,3 +4,4 @@
 .sass-cache
 *.sqlite3
 static/libs
+static/css
