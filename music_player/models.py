@@ -6,7 +6,7 @@ from autoslug.fields import AutoSlugField
 
 class Artist(models.Model):
     name = models.CharField(verbose_name='Artist name', max_length=256)
-    slug = AutoSlugField()
+    slug = AutoSlugField(populate_from='name')
 
     def __unicode__(self):
         return self.name
@@ -14,7 +14,7 @@ class Artist(models.Model):
 
 class Album(models.Model):
     name = models.CharField(verbose_name='Album name', max_length=256)
-    slug = AutoSlugField()
+    slug = AutoSlugField(populate_from='name')
 
     artist = models.ForeignKey('artist')
 

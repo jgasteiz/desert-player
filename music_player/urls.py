@@ -4,12 +4,14 @@ from rest_framework import viewsets, routers
 
 from music_player.models import Audio
 from .views import AppView
-from .api import SongsViewSet
+from . import api
 
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
-router.register(r'songs', SongsViewSet)
+router.register(r'artists', api.ArtistsViewSet)
+router.register(r'albums', api.AlbumsViewSet)
+router.register(r'songs', api.SongsViewSet)
 
 urlpatterns = patterns('',
     url(r'^$', AppView.as_view(), name='home'),
