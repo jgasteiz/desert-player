@@ -13,9 +13,23 @@ mplayer.app.controller('ArtistsCtrl', ['$scope', 'AudioService', function($scope
 	$scope.artists = AudioService.Artists.query();
 }]);
 
+mplayer.app.controller('SingleArtistCtrl', ['$scope', '$routeParams', 'AudioService', function($scope, $routeParams, AudioService) {
+	$scope.title = 'This is one artist';
+	$scope.artist = AudioService.Artist.get({artistId: $routeParams.artist}, function(artist) {
+		console.log(artist);
+	});
+}]);
+
 mplayer.app.controller('AlbumsCtrl', ['$scope', 'AudioService', function($scope, AudioService) {
-	$scope.title = 'This is artists';
+	$scope.title = 'This is albums';
 	$scope.albums = AudioService.Albums.query();
+}]);
+
+mplayer.app.controller('SingleAlbumCtrl', ['$scope', '$routeParams', 'AudioService', function($scope, $routeParams, AudioService) {
+	$scope.title = 'This is one album';
+	$scope.album = AudioService.Album.get({albumId: $routeParams.album}, function(album) {
+		console.log(album);
+	});
 }]);
 
 mplayer.app.controller('SongsCtrl', ['$scope', 'AudioService', function($scope, AudioService) {

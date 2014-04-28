@@ -11,6 +11,9 @@ class Artist(models.Model):
     def __unicode__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return 'meh'
+
 
 class Album(models.Model):
     name = models.CharField(verbose_name='Album name', max_length=256)
@@ -20,6 +23,9 @@ class Album(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return 'meh'
 
 
 class Audio(models.Model):

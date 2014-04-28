@@ -15,7 +15,7 @@ mplayer.app.config(['$routeProvider', function($routeProvider) {
 		})
 		.when('/artists/:artist/', {
 			templateUrl: 'static/views/artist_detail.html',
-			controller: 'ArtistsCtrl'
+			controller: 'SingleArtistCtrl'
 		})
 		.when('/albums', {
 			templateUrl: 'static/views/album_list.html',
@@ -23,7 +23,7 @@ mplayer.app.config(['$routeProvider', function($routeProvider) {
 		})
 		.when('/albums/:album/', {
 			templateUrl: 'static/views/album_detail.html',
-			controller: 'AlbumsCtrl'
+			controller: 'SingleAlbumCtrl'
 		})
 		.when('/songs', {
 			templateUrl: 'static/views/songs.html',

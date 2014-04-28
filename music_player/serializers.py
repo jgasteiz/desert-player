@@ -5,15 +5,11 @@ from music_player import models
 class ArtistSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Artist
-        fields = ('name', 'slug',)
 
 
 class AlbumSerializer(serializers.ModelSerializer):
-    artist = serializers.Field(source='artist.name')
-
     class Meta:
         model = models.Album
-        fields = ('name', 'slug', 'artist',)
 
 
 class AudioSerializer(serializers.ModelSerializer):
