@@ -1,2 +1,7 @@
 <h1>{{ title }}</h1>
-<h2>{{ album.name }}</h2>
+<h2>{{ album.name }}, playing: {{ onPlay }}</h2>
+<ul>
+	<li ng-repeat="track in album.tracks" ng-click="play(track.title)">
+		<spam>{{ track }}</spam>
+	</li>
+</ul>

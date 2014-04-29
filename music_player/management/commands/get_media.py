@@ -4,7 +4,7 @@ import eyed3
 from django.conf import settings
 from django.core.management.base import BaseCommand
 
-from music_player.models import Audio, Album, Artist
+from music_player.models import Track, Album, Artist
 
 MEDIA_ROOT = settings.MEDIA_ROOT
 AUDIO_FORMATS = ('mp3',)
@@ -19,7 +19,7 @@ class Command(BaseCommand):
 
         for path, subdirs, files in os.walk(MEDIA_ROOT):
             for filename in files:
-                # If it's a valid audio, we create the file.
+                # If it's a valid track, we create the file.
                 if any(audio_format in filename for audio_format in AUDIO_FORMATS):
 
                     audio_file = eyed3.load('%s/%s' % (path, filename))
@@ -31,11 +31,11 @@ class Command(BaseCommand):
                         name=tag.album,
                         artist=artist,
                     )
-                    audio, created = Audio.objects.get_or_create(
+                    track, created = Track.objects.get_or_create(
                         title=tag.title,
                         artist=artist,
                         album=album,
                         track_num=tag.track_num[0],
                     )
 
-                    print '%s, %s, %s' % (audio, album, artist)
+                    print '%s, %s, %s' % (track, album, artist)

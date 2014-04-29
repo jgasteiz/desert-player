@@ -30,14 +30,19 @@ mplayer.app.controller('SingleAlbumCtrl', ['$scope', '$routeParams', 'AudioServi
 	$scope.album = AudioService.Album.get({albumId: $routeParams.album}, function(album) {
 		console.log(album);
 	});
-}]);
-
-mplayer.app.controller('SongsCtrl', ['$scope', 'AudioService', function($scope, AudioService) {
-	$scope.title = 'This is songs';
-	$scope.songs = AudioService.Songs.query();
 
 	$scope.onPlay = 'Nothing yet.'
-	$scope.play = function(songTitle) {
-		$scope.onPlay = songTitle;
+	$scope.play = function(trackTitle) {
+		$scope.onPlay = trackTitle;
+	};
+}]);
+
+mplayer.app.controller('TracksCtrl', ['$scope', 'AudioService', function($scope, AudioService) {
+	$scope.title = 'This is tracks';
+	$scope.tracks = AudioService.Tracks.query();
+
+	$scope.onPlay = 'Nothing yet.'
+	$scope.play = function(trackTitle) {
+		$scope.onPlay = trackTitle;
 	};
 }]);

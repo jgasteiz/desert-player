@@ -25,9 +25,9 @@ mplayer.app.config(['$routeProvider', function($routeProvider) {
 			templateUrl: 'static/views/album_detail.html',
 			controller: 'SingleAlbumCtrl'
 		})
-		.when('/songs', {
-			templateUrl: 'static/views/songs.html',
-			controller: 'SongsCtrl'
+		.when('/tracks', {
+			templateUrl: 'static/views/tracks.html',
+			controller: 'TracksCtrl'
 		})
 		.otherwise({
 			templateUrl: 'static/views/404.html'

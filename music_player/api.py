@@ -1,7 +1,7 @@
 from rest_framework import permissions
 from rest_framework import viewsets
 
-from .models import Audio, Album, Artist
+from .models import Track, Album, Artist
 from . import serializers
 
 
@@ -9,21 +9,29 @@ class ArtistsViewSet(viewsets.ModelViewSet):
     """
     """
     queryset = Artist.objects.all()
-    serializer_class = serializers.ArtistSerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+
+    def get_serializer_class(self):
+        if self.action == 'retrieve':
+            return serializers.SingleArtistSerializer
+        return serializers.ArtistSerializer
 
 
 class AlbumsViewSet(viewsets.ModelViewSet):
     """
     """
     queryset = Album.objects.all()
-    serializer_class = serializers.AlbumSerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
+    def get_serializer_class(self):
+        if self.action == 'retrieve':
+            return serializers.SingleAlbumSerializer
+        return serializers.AlbumSerializer
 
-class SongsViewSet(viewsets.ModelViewSet):
+
+class TracksViewSet(viewsets.ModelViewSet):
     """
     """
-    queryset = Audio.objects.all()
-    serializer_class = serializers.AudioSerializer
+    queryset = Track.objects.all()
+    serializer_class = serializers.TrackSerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)

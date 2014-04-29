@@ -1,8 +1,7 @@
 from django.conf import settings
 from django.conf.urls import patterns, include, url
-from rest_framework import viewsets, routers
+from rest_framework import routers
 
-from music_player.models import Audio
 from .views import AppView
 from . import api
 
@@ -11,7 +10,7 @@ from . import api
 router = routers.DefaultRouter()
 router.register(r'artists', api.ArtistsViewSet)
 router.register(r'albums', api.AlbumsViewSet)
-router.register(r'songs', api.SongsViewSet)
+router.register(r'tracks', api.TracksViewSet)
 
 
 
