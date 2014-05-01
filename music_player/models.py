@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 
 from autoslug.fields import AutoSlugField
@@ -37,3 +38,6 @@ class Track(models.Model):
 
     def __unicode__(self):
         return self.title
+
+    def get_src(self):
+        return '%s%s' % (settings.MEDIA_URL, self.path)

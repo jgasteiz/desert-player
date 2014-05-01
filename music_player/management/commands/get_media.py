@@ -22,7 +22,8 @@ class Command(BaseCommand):
                 # If it's a valid track, we create the file.
                 if any(audio_format in filename for audio_format in AUDIO_FORMATS):
 
-                    audio_file = eyed3.load('%s/%s' % (path, filename))
+                    file_path = '%s/%s' % (path, filename)
+                    audio_file = eyed3.load(file_path)
 
                     tag = audio_file.tag
 
@@ -36,6 +37,7 @@ class Command(BaseCommand):
                         artist=artist,
                         album=album,
                         track_num=tag.track_num[0],
+                        path=file_path.replace(MEDIA_ROOT, ''),
                     )
 
                     print '%s, %s, %s' % (track, album, artist)

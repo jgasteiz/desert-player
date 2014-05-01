@@ -1,5 +1,6 @@
 <h1>{{ title }}</h1>
 <h2>Playing: {{ onPlay }}</h2>
+<player title="{{ onPlay.title }}" src="{{ onPlay.src }}"></player>
 <ul class="track-list">
 	<li class="track-list__item"
 		ng-class="{'is-playing': onPlay === track}"

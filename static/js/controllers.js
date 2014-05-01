@@ -3,6 +3,13 @@ mplayer.app.controller('AppCtrl', ['$scope', '$location', function($scope, $loca
 		var locationPath = $location.path();
 		return locationPath.indexOf(route) === 0;
 	};
+
+	$scope.active = 'meh';
+
+	$scope.onPlay = 'Nothing yet.';
+	$scope.play = function(track) {
+		$scope.onPlay = track;
+	};
 }]);
 
 mplayer.app.controller('HomeCtrl', ['$scope', function($scope) {
@@ -31,19 +38,9 @@ mplayer.app.controller('SingleAlbumCtrl', ['$scope', '$routeParams', 'AudioServi
 	$scope.album = AudioService.Album.get({albumId: $routeParams.album}, function(album) {
 		$scope.title = album.name + ' - ' + album.artist;
 	});
-
-	$scope.onPlay = 'Nothing yet.';
-	$scope.play = function(track) {
-		$scope.onPlay = track;
-	};
 }]);
 
 mplayer.app.controller('TracksCtrl', ['$scope', 'AudioService', function($scope, AudioService) {
 	$scope.title = 'All tracks';
 	$scope.tracks = AudioService.Tracks.query();
-
-	$scope.onPlay = 'Nothing yet.';
-	$scope.play = function(track) {
-		$scope.onPlay = track;
-	};
 }]);
