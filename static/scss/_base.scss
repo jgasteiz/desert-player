@@ -54,7 +54,7 @@
 .track-list__item {
 	cursor: pointer;
 	display: block;
-	line-height: 36px;
+	padding: 10px;
 
 	&.is-playing,
 	&:hover {
