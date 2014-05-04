@@ -4,8 +4,6 @@ mplayer.app.controller('AppCtrl', ['$scope', '$location', function($scope, $loca
 		return locationPath.indexOf(route) === 0;
 	};
 
-	$scope.active = 'meh';
-
 	$scope.onPlay = 'Nothing yet.';
 	$scope.play = function(track) {
 		$scope.onPlay = track;

@@ -5,7 +5,7 @@ mplayer.app.directive('player', function() {
 			title: '@',
 			src: '@'
 		},
-		template: '<audio src="{{src}}" controls></audio>'
+		templateUrl: 'static/templates/directives/player.html'
 	}
 });
 
@@ -17,5 +17,17 @@ mplayer.app.directive('grid', function() {
 			url: '@'
 		},
 		templateUrl: 'static/templates/directives/grid.html'
+	}
+});
+
+mplayer.app.directive('list', function() {
+	return {
+		restrict: 'E',
+		scope: {
+			items: '=',
+			onClick: '&',
+			isActive: '='
+		},
+		templateUrl: 'static/templates/directives/list.html'
 	}
 });
