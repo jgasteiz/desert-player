@@ -32,8 +32,9 @@ class SingleArtistSerializer(serializers.ModelSerializer):
 
 
 class SingleAlbumSerializer(serializers.ModelSerializer):
+    artist = serializers.Field(source='artist.name')
     tracks = TrackSerializer(many=True)
 
     class Meta:
         model = models.Album
-        fields = ('name', 'slug', 'tracks',)
+        fields = ('name', 'slug', 'tracks', 'artist',)

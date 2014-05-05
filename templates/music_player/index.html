@@ -33,11 +33,14 @@
 				</ul>
 			</div>
 			<div class="large-10 columns">
-				<player title="[[onPlay.title]]" src="[[onPlay.src]]"></player>
 				<ng-view></ng-view>
 			</div>
 		</div>
 	</div>
+
+	<footer class="footer">
+		<player track="trackOnPlay" album="albumOnPlay"></player>
+	</footer>
 
 	<script src="{% static 'libs/angular/angular.js' %}"></script>
 	<script src="{% static 'libs/angular-route/angular-route.js' %}"></script>

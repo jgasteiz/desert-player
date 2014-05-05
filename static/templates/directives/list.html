@@ -1,20 +1,20 @@
 <ul class="track-list">
-	<li class="track-list__item"
-		ng-class="{'is-playing': isActive === item}"
-		ng-repeat="item in items"
-		ng-click="onClick({track: item})">
+	<li class="track-list__track"
+		ng-class="{'is-playing': isActive === track}"
+		ng-repeat="track in tracks"
+		ng-click="onClick({track: track, album: album})">
 		<div class="row">
 			<div class="large-1 columns">
-				[[item.track_num]]
+				[[track.track_num]]
 			</div>
 			<div class="large-3 columns">
-				[[item.title]]
+				[[track.title]]
 			</div>
 			<div class="large-3 columns">
-				[[item.artist]]
+				[[track.artist]]
 			</div>
 			<div class="large-3 columns">
-				[[item.album]]
+				[[track.album]]
 			</div>
 			<div class="large-2 columns">
 				`track duration`

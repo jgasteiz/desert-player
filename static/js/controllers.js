@@ -4,9 +4,16 @@ mplayer.app.controller('AppCtrl', ['$scope', '$location', function($scope, $loca
 		return locationPath.indexOf(route) === 0;
 	};
 
-	$scope.onPlay = 'Nothing yet.';
-	$scope.play = function(track) {
-		$scope.onPlay = track;
+	$scope.trackOnPlay = 'Nothing yet.';
+	$scope.albumOnPlay = null;
+
+	$scope.play = function(track, album) {
+		$scope.trackOnPlay = track;
+		if (album) {
+			$scope.albumOnPlay = album;
+		} else {
+			$scope.albumOnPlay = null;
+		}
 	};
 }]);
 
@@ -15,14 +22,14 @@ mplayer.app.controller('HomeCtrl', ['$scope', function($scope) {
 }]);
 
 mplayer.app.controller('ArtistsCtrl', ['$scope', 'AudioService', function($scope, AudioService) {
-	$scope.title = 'This is artists';
+	$scope.title = 'All artists';
 	$scope.artists = AudioService.Artists.query();
 }]);
 
 mplayer.app.controller('SingleArtistCtrl', ['$scope', '$routeParams', 'AudioService', function($scope, $routeParams, AudioService) {
-	$scope.title = 'This is one artist';
+	$scope.title = '';
 	$scope.artist = AudioService.Artist.get({artistId: $routeParams.artist}, function(artist) {
-		console.log(artist);
+		$scope.title = 'Albums by ' + artist.name;
 	});
 }]);
 

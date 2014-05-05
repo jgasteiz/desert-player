@@ -2,10 +2,35 @@ mplayer.app.directive('player', function() {
 	return {
 		restrict: 'E',
 		scope: {
-			title: '@',
-			src: '@'
+			track: '=',
+			album: '='
 		},
-		templateUrl: 'static/templates/directives/player.html'
+		templateUrl: 'static/templates/directives/player.html',
+		link: function(scope, element, attrs) {
+			scope.audioEl = element.find('audio');
+			scope.isPlaying = false;
+
+			scope.play = function() {
+				if (scope.audioEl.attr('src')) {
+					scope.audioEl[0].play();
+					scope.isPlaying = true;
+				}
+			};
+
+			scope.pause = function() {
+				if (scope.audioEl.attr('src')) {
+					scope.audioEl[0].pause();
+					scope.isPlaying = false;
+				}
+			};
+
+			scope.$watch('track', function(newValue, oldValue) {
+				if (newValue !== oldValue) {
+					scope.isPlaying = false;
+				}
+			});
+
+		}
 	}
 });
 
@@ -24,7 +49,8 @@ mplayer.app.directive('list', function() {
 	return {
 		restrict: 'E',
 		scope: {
-			items: '=',
+			tracks: '=',
+			album: '=',
 			onClick: '&',
 			isActive: '='
 		},
