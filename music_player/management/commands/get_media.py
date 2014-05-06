@@ -15,8 +15,6 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
 
-        tag = eyed3
-
         for path, subdirs, files in os.walk(MEDIA_ROOT):
             for filename in files:
                 # If it's a valid track, we create the file.
