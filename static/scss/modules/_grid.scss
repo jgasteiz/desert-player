@@ -1,0 +1,23 @@
+.grid-list {
+	@extend .row;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.grid-list__item {
+	@extend .large-3;
+	@extend .medium-4;
+	@extend .small-6;
+	@extend .columns;
+
+	> div {
+		height: 140px;
+	}
+}
+
+.grid-list__item-title {
+	display: block;
+	font-size: 18px;
+	text-align: center;
+}

@@ -1,0 +1,76 @@
+.player {
+	text-align: center;
+
+	audio {
+		display: none;
+	}
+}
+
+%player-icon {
+	display: inline-block;
+	opacity: 0.6;
+	position: absolute;
+	text-indent: -9999em;
+
+	&:hover {
+		opacity: 1;
+	}
+}
+
+.player__title {
+	position: absolute;
+	left: 20px;
+	top: 20px;
+}
+
+.player__controls {
+	bottom: 0;
+	left: 50%;
+	margin-left: -150px;
+	position: absolute;
+	text-align: center;
+	top: 0;
+	width: 300px;
+}
+
+.player__previous {
+	@extend %player-icon;
+	background-image: url(../sprites/previous.png);
+	height: 40px;
+	left: 0;
+	margin-top: -20px;
+	top: 50%;
+	width: 76px;
+}
+
+.player__play {
+	@extend %player-icon;
+	background-image: url(../sprites/play.png);
+	height: 60px;
+	left: 50%;
+	margin-left: -26px;
+	margin-top: -30px;
+	top: 50%;
+	width: 52px;
+}
+
+.player__pause {
+	@extend %player-icon;
+	background-image: url(../sprites/pause.png);
+	height: 52px;
+	left: 50%;
+	margin-left: -24px;
+	margin-top: -26px;
+	top: 50%;
+	width: 40px;
+}
+
+.player__next {
+	@extend %player-icon;
+	background-image: url(../sprites/next.png);
+	height: 40px;
+	right: 0;
+	margin-top: -20px;
+	top: 50%;
+	width: 76px;
+}

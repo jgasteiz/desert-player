@@ -24,9 +24,6 @@ class Album(models.Model):
     def __unicode__(self):
         return self.name
 
-    def get_absolute_url(self):
-        return 'meh'
-
 
 class Track(models.Model):
     track_num = models.IntegerField(verbose_name='Track number')

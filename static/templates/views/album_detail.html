@@ -1,27 +1,2 @@
-<h1>{{ title }}</h1>
-<h2>Playing: {{ onPlay }}</h2>
-<player title="{{ onPlay.title }}" src="{{ onPlay.src }}"></player>
-<ul class="track-list">
-	<li class="track-list__item"
-		ng-class="{'is-playing': onPlay === track}"
-		ng-repeat="track in album.tracks"
-		ng-click="play(track)">
-		<div class="row">
-			<div class="large-1 columns">
-				{{ track.track_num }}
-			</div>
-			<div class="large-3 columns">
-				{{ track.title }}
-			</div>
-			<div class="large-3 columns">
-				{{ track.artist }}
-			</div>
-			<div class="large-3 columns">
-				{{ track.album }}
-			</div>
-			<div class="large-2 columns">
-				`track duration`
-			</div>
-		</div>
-	</li>
-</ul>
+<h1>[[title]]</h1>
+<list tracks="album.tracks" is-active="trackOnPlay" album="album" on-click="play(track, album)"></list>

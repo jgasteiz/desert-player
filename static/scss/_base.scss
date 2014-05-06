@@ -1,6 +1,6 @@
 .main {
+	margin-bottom: 80px;
 	margin-top: 20px;
-
 }
 
 .row {
@@ -24,41 +24,12 @@
 	width: 100%;
 }
 
-.grid-list {
-	@extend .row;
-	list-style: none;
-	margin: 0;
-}
-
-.grid-list__item {
-	@extend .large-3;
-	@extend .medium-4;
-	@extend .small-6;
-	@extend .columns;
-
-	> div {
-		height: 140px;
-	}
-}
-
-.grid-list__item-title {
-	display: block;
-	font-size: 18px;
-	text-align: center;
-}
-
-.track-list {
-	list-style: none;
-	margin: 0;
-}
-
-.track-list__item {
-	cursor: pointer;
-	display: block;
-	padding: 10px;
-
-	&.is-playing,
-	&:hover {
-		background-color: #f2f2f2;
-	}
+.footer {
+	background-color: #f2f2f2;
+	bottom: 0;
+	height: 80px;
+	left: 0;
+	padding: 10px 20px;
+	position: fixed;
+	right: 0;
 }

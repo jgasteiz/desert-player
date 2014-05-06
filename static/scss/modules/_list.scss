@@ -1,0 +1,15 @@
+.track-list {
+	list-style: none;
+	margin: 0;
+}
+
+.track-list__track {
+	cursor: pointer;
+	display: block;
+	line-height: 36px;
+
+	&.is-playing,
+	&:hover {
+		background-color: #f2f2f2;
+	}
+}

@@ -1,0 +1,10 @@
+<div class="player">
+	<div class="player__title">[[track.title]] - [[album.name]]</div>
+	<div class="player__controls">
+		<a class="player__previous">Previous</a>
+		<a ng-hide="isPlaying" ng-click="play()" class="player__play">Play</a>
+		<a ng-show="isPlaying" ng-click="pause()" class="player__pause">Pause</a>
+		<a class="player__next">Next</a>
+	</div>
+	<audio src="[[track.src]]"></audio>
+</div>
