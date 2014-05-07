@@ -1,15 +1,25 @@
 .track-list {
 	list-style: none;
 	margin: 0;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 
 .track-list__track {
 	cursor: pointer;
 	display: block;
-	line-height: 36px;
+	padding: 5px 0;
 
-	&.is-playing,
+	&.is-selected,
 	&:hover {
 		background-color: #f2f2f2;
+	}
+
+	&.is-playing {
+		background-color: #f5f5da;
 	}
 }

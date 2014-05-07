@@ -1,8 +1,9 @@
 <ul class="track-list">
 	<li class="track-list__track"
-		ng-class="{'is-playing': isActive === track}"
+		ng-class="{'is-playing': isPlaying === track, 'is-selected': isSelected === track}"
 		ng-repeat="track in tracks"
-		ng-click="onClick({track: track, album: album})">
+		ng-click="onClick({track: track, album: album})"
+		ng-dblclick="onDblClick({track: track, album: album})">
 		<div class="row">
 			<div class="large-1 columns">
 				[[track.track_num]]

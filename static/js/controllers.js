@@ -5,7 +5,10 @@ mplayer.app.controller('AppCtrl', ['$scope', '$location', function($scope, $loca
 	};
 
 	$scope.trackOnPlay = 'Nothing yet.';
+	$scope.selectedTrack = 'Nothing yet.';
 	$scope.albumOnPlay = null;
+
+	$scope.queue = [];
 
 	$scope.play = function(track, album) {
 		$scope.trackOnPlay = track;
@@ -13,6 +16,15 @@ mplayer.app.controller('AppCtrl', ['$scope', '$location', function($scope, $loca
 			$scope.albumOnPlay = album;
 		} else {
 			$scope.albumOnPlay = null;
+		}
+	};
+
+	$scope.selectTrack = function(track, album) {
+		$scope.selectedTrack = track;
+		if (album) {
+			$scope.selectedAlbum = album;
+		} else {
+			$scope.selectedAlbum = null;
 		}
 	};
 }]);

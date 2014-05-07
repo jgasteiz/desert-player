@@ -44,7 +44,6 @@ INSTALLED_APPS = (
     'music_player',
     'autoslug',
     'rest_framework',
-    'core',
 )
 
 MIDDLEWARE_CLASSES = (

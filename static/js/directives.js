@@ -26,7 +26,7 @@ mplayer.app.directive('player', function() {
 
 			scope.$watch('track', function(newValue, oldValue) {
 				if (newValue !== oldValue) {
-					scope.isPlaying = false;
+					scope.play();
 				}
 			});
 
@@ -52,7 +52,9 @@ mplayer.app.directive('list', function() {
 			tracks: '=',
 			album: '=',
 			onClick: '&',
-			isActive: '='
+			onDblClick: '&',
+			isSelected: '=',
+			isPlaying: '='
 		},
 		templateUrl: 'static/templates/directives/list.html'
 	}
