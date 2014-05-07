@@ -13,7 +13,6 @@ router.register(r'albums', api.AlbumsViewSet)
 router.register(r'tracks', api.TracksViewSet)
 
 
-
 urlpatterns = patterns('',
     url(r'^$', AppView.as_view(), name='home'),
 

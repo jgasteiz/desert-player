@@ -34,14 +34,19 @@ mplayer.app.directive('player', function() {
 	}
 });
 
-mplayer.app.directive('grid', function() {
+mplayer.app.directive('grid', function($location) {
 	return {
 		restrict: 'E',
 		scope: {
 			items: '=',
 			url: '@'
 		},
-		templateUrl: 'static/templates/directives/grid.html'
+		templateUrl: 'static/templates/directives/grid.html',
+		link: function(scope) {
+			scope.navigate = function(url, itemId) {
+				$location.path(url + '/' + itemId + '/');
+			};
+		}
 	}
 });
 

@@ -1,6 +1,7 @@
 .track-list {
 	list-style: none;
 	margin: 0;
+	padding: 0;
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-khtml-user-select: none;
@@ -12,7 +13,7 @@
 .track-list__track {
 	cursor: pointer;
 	display: block;
-	padding: 5px 0;
+	padding: 10px $gutter;
 
 	&.is-selected,
 	&:hover {

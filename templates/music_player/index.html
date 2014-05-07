@@ -15,28 +15,24 @@
 </head>
 <body ng-app="musicPlayer" ng-controller="AppCtrl">
 
-	<nav class="top-bar" data-topbar>
-		<ul class="title-area">
-			<li class="name">
-				<h1><a href="/">Music player</a></h1>
-			</li>
-		</ul>
+	<nav class="top-nav" data-topbar>
+		<a class="top-nav__brand" href="/">The Desert Player</a>
 	</nav>
 
+	{% spaceless %}
 	<div class="main" role="main">
-		<div class="row">
-			<div class="large-2 panel columns">
-				<ul class="side-nav">
-					<li ng-class="{active:isActive('/artists')}"><a href="#/artists">Artists</a></li>
-					<li ng-class="{active:isActive('/albums')}"><a href="#/albums">Albums</a></li>
-					<li ng-class="{active:isActive('/tracks')}"><a href="#/tracks">All tracks</a></li>
-				</ul>
-			</div>
-			<div class="large-10 columns">
-				<ng-view></ng-view>
-			</div>
+		<div class="side-nav">
+			<ul class="side-nav__list">
+				<li class="side-nav__item" ng-class="{'is-active': isActive('/artists')}"><a href="#/artists">Artists</a></li>
+				<li class="side-nav__item" ng-class="{'is-active': isActive('/albums')}"><a href="#/albums">Albums</a></li>
+				<li class="side-nav__item" ng-class="{'is-active': isActive('/tracks')}"><a href="#/tracks">All tracks</a></li>
+			</ul>
+		</div>
+		<div class="main-content">
+			<ng-view></ng-view>
 		</div>
 	</div>
+	{% endspaceless %}
 
 	<footer class="footer">
 		<player track="trackOnPlay" album="albumOnPlay"></player>

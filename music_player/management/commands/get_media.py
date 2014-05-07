@@ -25,16 +25,33 @@ class Command(BaseCommand):
 
                     tag = audio_file.tag
 
-                    artist, created = Artist.objects.get_or_create(name=tag.artist)
+                    artist_name = tag.artist
+                    if not artist_name:
+                        artist_name = 'unnamed'
+
+                    album_name = tag.album
+                    if not album_name:
+                        album_name = 'unnamed'
+
+                    track_title = tag.title
+                    if not track_title:
+                        track_title = 'unnamed'
+
+                    track_num = tag.track_num[0]
+                    if not track_num:
+                        track_num = 0
+
+                    artist, created = Artist.objects.get_or_create(
+                        name=artist_name)
                     album, created = Album.objects.get_or_create(
-                        name=tag.album,
+                        name=album_name,
                         artist=artist,
                     )
                     track, created = Track.objects.get_or_create(
-                        title=tag.title,
+                        title=track_title,
                         artist=artist,
                         album=album,
-                        track_num=tag.track_num[0],
+                        track_num=track_num,
                         path=file_path.replace(MEDIA_ROOT, ''),
                     )
 

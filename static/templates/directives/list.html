@@ -4,20 +4,20 @@
 		ng-repeat="track in tracks"
 		ng-click="onClick({track: track, album: album})"
 		ng-dblclick="onDblClick({track: track, album: album})">
-		<div class="row">
-			<div class="large-1 columns">
+		<div class="grid">
+			<div class="grid__item one-twelfth">
 				[[track.track_num]]
-			</div>
-			<div class="large-3 columns">
+			</div><!--
+			--><div class="grid__item one-quarter">
 				[[track.title]]
-			</div>
-			<div class="large-3 columns">
+			</div><!--
+			--><div class="grid__item one-quarter">
 				[[track.artist]]
-			</div>
-			<div class="large-3 columns">
+			</div><!--
+			--><div class="grid__item one-quarter">
 				[[track.album]]
-			</div>
-			<div class="large-2 columns">
+			</div><!--
+			--><div class="grid__item one-sixth">
 				`track duration`
 			</div>
 		</div>

@@ -1,8 +1,8 @@
 <ul class="grid-list">
-	<li class="grid-list__item" ng-repeat="item in items">
-		<div class="panel center-align-wrp">
+	<li class="grid-list__item-wrp" ng-repeat="item in items">
+		<div class="grid-list__item center-align-wrp" ng-click="navigate(url, item.id)">
 			<div class="center-align">
-				<a class="grid-list__item-title" href="#/{{ url }}/{{ item.id }}/">{{ item.name }}</a>
+				<span class="grid-list__item-title" >{{ item.name }}</span>
 			</div>
 		</div>
 	</li>
