@@ -18,7 +18,7 @@ mplayer.app.directive('player', function() {
 					scope.isPlaying = true;
 
 					$audioEl.off('ended').on('ended', function() {
-						scope.next();
+						scope.next({apply: true});
 					});
 				}
 			};
@@ -30,9 +30,17 @@ mplayer.app.directive('player', function() {
 				}
 			};
 
-			scope.next = function() {
-				scope.queue.push(scope.queue.shift());
-				scope.track = scope.queue[0];
+			// TODO: make this better. This is horrible.
+			scope.next = function(options) {
+				if (options && options.apply) {
+					scope.$apply(function() {
+						scope.queue.push(scope.queue.shift());
+						scope.track = scope.queue[0];
+					});
+				} else {
+					scope.queue.push(scope.queue.shift());
+					scope.track = scope.queue[0];
+				}
 			};
 
 			scope.previous = function() {
