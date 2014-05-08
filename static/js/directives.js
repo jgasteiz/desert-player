@@ -32,16 +32,12 @@ mplayer.app.directive('player', function() {
 
 			scope.next = function() {
 				scope.queue.push(scope.queue.shift());
-				scope.$apply(function() {
-					scope.track = scope.queue[0];
-				});
+				scope.track = scope.queue[0];
 			};
 
 			scope.previous = function() {
 				scope.queue.unshift(scope.queue.pop());
-				scope.$apply(function() {
-					scope.track = scope.queue[0];
-				});
+				scope.track = scope.queue[0];
 			};
 
 			scope.$watch('track', function(newValue, oldValue) {
