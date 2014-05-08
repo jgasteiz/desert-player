@@ -8,33 +8,40 @@ mplayer.app.directive('player', function() {
 		},
 		templateUrl: 'static/templates/directives/player.html',
 		link: function(scope, element, attrs) {
-			scope.audioEl = element.find('audio');
+
+			var $audioEl = element.find('audio');
 			scope.isPlaying = false;
 
 			scope.play = function() {
-				if (scope.audioEl.attr('src')) {
-					scope.audioEl[0].play();
+				if ($audioEl.attr('src')) {
+					$audioEl[0].play();
 					scope.isPlaying = true;
+
+					$audioEl.off('ended').on('ended', function() {
+						scope.next();
+					});
 				}
 			};
 
 			scope.pause = function() {
-				if (scope.audioEl.attr('src')) {
-					scope.audioEl[0].pause();
+				if ($audioEl.attr('src')) {
+					$audioEl[0].pause();
 					scope.isPlaying = false;
 				}
 			};
 
 			scope.next = function() {
 				scope.queue.push(scope.queue.shift());
-				scope.track = scope.queue[0];
-				scope.play();
+				scope.$apply(function() {
+					scope.track = scope.queue[0];
+				});
 			};
 
 			scope.previous = function() {
 				scope.queue.unshift(scope.queue.pop());
-				scope.track = scope.queue[0];
-				scope.play();
+				scope.$apply(function() {
+					scope.track = scope.queue[0];
+				});
 			};
 
 			scope.$watch('track', function(newValue, oldValue) {
