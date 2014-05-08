@@ -106,5 +106,6 @@ STATICFILES_DIRS = (
 )
 
 STATIC_URL = '/static/'
-MEDIA_ROOT = '/Users/javi/Music/iTunes/iTunes Media/Music'
 MEDIA_URL = '/media/'
+
+MEDIA_ROOT = '/where/your/music/is/'
