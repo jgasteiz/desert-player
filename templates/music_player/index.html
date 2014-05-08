@@ -27,6 +27,13 @@
 				<li class="side-nav__item" ng-class="{'is-active': isActive('/albums')}"><a href="#/albums">Albums</a></li>
 				<li class="side-nav__item" ng-class="{'is-active': isActive('/tracks')}"><a href="#/tracks">All tracks</a></li>
 			</ul>
+			<div class="queue">
+				<h2>Queue</h2>
+				<ul>
+					<li ng-repeat="queuedTrack in queue">[[ queuedTrack.track_num ]] - [[ queuedTrack.title ]]</li>
+					<li ng-show="!queue.length">No tracks on queue</li>
+				</ul>
+			</div>
 		</div>
 		<div class="main-content">
 			<ng-view></ng-view>
@@ -35,7 +42,7 @@
 	{% endspaceless %}
 
 	<footer class="footer">
-		<player track="trackOnPlay" album="albumOnPlay"></player>
+		<player track="trackOnPlay" album="albumOnPlay" queue="queue"></player>
 	</footer>
 
 	<script src="{% static 'libs/angular/angular.js' %}"></script>

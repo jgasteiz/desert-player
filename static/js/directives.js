@@ -3,7 +3,8 @@ mplayer.app.directive('player', function() {
 		restrict: 'E',
 		scope: {
 			track: '=',
-			album: '='
+			album: '=',
+			queue: '='
 		},
 		templateUrl: 'static/templates/directives/player.html',
 		link: function(scope, element, attrs) {
@@ -24,12 +25,23 @@ mplayer.app.directive('player', function() {
 				}
 			};
 
+			scope.next = function() {
+				scope.queue.push(scope.queue.shift());
+				scope.track = scope.queue[0];
+				scope.play();
+			};
+
+			scope.previous = function() {
+				scope.queue.unshift(scope.queue.pop());
+				scope.track = scope.queue[0];
+				scope.play();
+			};
+
 			scope.$watch('track', function(newValue, oldValue) {
 				if (newValue !== oldValue) {
 					scope.play();
 				}
 			});
-
 		}
 	}
 });

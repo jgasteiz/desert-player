@@ -4,17 +4,24 @@ mplayer.app.controller('AppCtrl', ['$scope', '$location', function($scope, $loca
 		return locationPath.indexOf(route) === 0;
 	};
 
-	$scope.trackOnPlay = 'Nothing yet.';
-	$scope.selectedTrack = 'Nothing yet.';
+	$scope.trackOnPlay = null;
+	$scope.selectedTrack = null;
 	$scope.albumOnPlay = null;
 
 	$scope.queue = [];
 
 	$scope.play = function(track, album) {
-		$scope.trackOnPlay = track;
 		if (album) {
 			$scope.albumOnPlay = album;
+			var trackList = album.tracks.slice(0),
+				currentTrackIndex = album.tracks.indexOf(track);
+			for (var i = 0; i < currentTrackIndex; i++) {
+				trackList.push(trackList.shift());
+			}
+			$scope.queue = trackList;
+			$scope.trackOnPlay = $scope.queue[0];
 		} else {
+			$scope.trackOnPlay = track;
 			$scope.albumOnPlay = null;
 		}
 	};
@@ -27,6 +34,12 @@ mplayer.app.controller('AppCtrl', ['$scope', '$location', function($scope, $loca
 			$scope.selectedAlbum = null;
 		}
 	};
+
+	$scope.$watch('trackOnPlay', function(newValue, oldValue) {
+		if (newValue !== oldValue) {
+			$scope.selectedTrack = null;
+		}
+	})
 }]);
 
 mplayer.app.controller('HomeCtrl', ['$scope', function($scope) {
