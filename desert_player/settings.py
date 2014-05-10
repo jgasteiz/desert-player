@@ -1,5 +1,5 @@
 """
-Django settings for music_player project.
+Django settings for desert_player project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.6/topics/settings/
@@ -41,7 +41,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'music_player',
+    'desert_player',
     'autoslug',
     'rest_framework',
 )
@@ -55,9 +55,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'music_player.urls'
+ROOT_URLCONF = 'desert_player.urls'
 
-WSGI_APPLICATION = 'music_player.wsgi.application'
+WSGI_APPLICATION = 'desert_player.wsgi.application'
 
 
 # Database

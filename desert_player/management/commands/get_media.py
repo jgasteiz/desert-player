@@ -4,7 +4,7 @@ import eyed3
 from django.conf import settings
 from django.core.management.base import BaseCommand
 
-from music_player.models import Track, Album, Artist
+from desert_player.models import Track, Album, Artist
 
 MEDIA_ROOT = settings.MEDIA_ROOT
 AUDIO_FORMATS = ('mp3',)

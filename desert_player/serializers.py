@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from music_player import models
+from desert_player import models
 
 
 class TrackSerializer(serializers.ModelSerializer):
