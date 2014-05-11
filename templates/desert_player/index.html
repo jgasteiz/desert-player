@@ -13,7 +13,7 @@
 	<link rel="stylesheet" href="{% static 'css/main.css' %}">
 	{% block header_js %}{% endblock header_js %}
 </head>
-<body ng-app="musicPlayer" ng-controller="AppCtrl">
+<body ng-app="musicPlayer" ng-controller="AppCtrl" ng-class="{'video-mode': videoMode}">
 
 	<nav class="top-nav" data-topbar>
 		<a class="top-nav__brand" href="/">The Desert Player</a>
@@ -26,6 +26,7 @@
 				<li class="side-nav__item" ng-class="{'is-active': isActive('/artists')}"><a href="#/artists">Artists</a></li>
 				<li class="side-nav__item" ng-class="{'is-active': isActive('/albums')}"><a href="#/albums">Albums</a></li>
 				<li class="side-nav__item" ng-class="{'is-active': isActive('/tracks')}"><a href="#/tracks">All tracks</a></li>
+				<li class="side-nav__item" ng-class="{'is-active': isActive('/video')}"><a href="#/video">Video player</a></li>
 			</ul>
 			<div class="queue">
 				<h2>Queue</h2>

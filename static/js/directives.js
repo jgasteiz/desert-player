@@ -57,6 +57,63 @@ mplayer.app.directive('player', function() {
 	}
 });
 
+mplayer.app.directive('videoPlayer', function($sce) {
+	return {
+		restrict: 'E',
+		scope: {},
+		templateUrl: 'static/templates/directives/video_player.html',
+		link: function(scope, element, attrs) {
+
+			scope.videoUrl = '';
+
+			scope.playVideo = function() {
+				var file = element.find('input')[0].files[0];
+				if (!file) {
+					scope.message = "You have to pick a video first.";
+					return false;
+				}
+
+				var videoNode = element.find('video')[0],
+					canPlay = videoNode.canPlayType(file.type);
+
+				if (canPlay !== '') {
+					scope.videoUrl = URL.createObjectURL(file);
+					scope.isLoaded = true;
+					scope.message = "";
+				} else {
+					scope.isLoaded = false;
+					scope.message = "The video can't be played.";
+				}
+			};
+
+			scope.trustSrc = function(src) {
+				return $sce.trustAsResourceUrl(src);
+			};
+
+			var $videoEl = element.find('video');
+			scope.isPlaying = false;
+
+			scope.play = function() {
+				if ($videoEl.attr('src')) {
+					$videoEl[0].play();
+					scope.isPlaying = true;
+
+					$videoEl.off('ended').on('ended', function() {
+						scope.next({apply: true});
+					});
+				}
+			};
+
+			scope.pause = function() {
+				if ($videoEl.attr('src')) {
+					$videoEl[0].pause();
+					scope.isPlaying = false;
+				}
+			};
+		}
+	}
+});
+
 mplayer.app.directive('grid', function($location) {
 	return {
 		restrict: 'E',

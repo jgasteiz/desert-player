@@ -32,6 +32,10 @@ mplayer.app.config(['$routeProvider', function($routeProvider) {
 			templateUrl: 'static/templates/views/tracks.html',
 			controller: 'TracksCtrl'
 		})
+		.when('/video', {
+			templateUrl: 'static/templates/views/video.html',
+			controller: 'VideoCtrl'
+		})
 		.otherwise({
 			templateUrl: 'static/templates/views/404.html'
 		})

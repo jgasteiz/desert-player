@@ -1,6 +1,13 @@
 mplayer.app.controller('AppCtrl', ['$scope', '$location', function($scope, $location) {
 	$scope.isActive = function(route) {
 		var locationPath = $location.path();
+
+		if (locationPath.indexOf('video') > -1) {
+			$scope.videoMode = true;
+		} else {
+			$scope.videoMode = false;
+		}
+
 		return locationPath.indexOf(route) === 0;
 	};
 
@@ -74,4 +81,8 @@ mplayer.app.controller('SingleAlbumCtrl', ['$scope', '$routeParams', 'AudioServi
 mplayer.app.controller('TracksCtrl', ['$scope', 'AudioService', function($scope, AudioService) {
 	$scope.title = 'All tracks';
 	$scope.tracks = AudioService.Tracks.query();
+}]);
+
+mplayer.app.controller('VideoCtrl', ['$scope', function($scope) {
+	$scope.title = 'Local video player';
 }]);
