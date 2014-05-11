@@ -25,6 +25,7 @@ a {
 	padding: 0 $gutter;
 	position: fixed;
 	top: 0;
+	z-index: 99;
 }
 
 .top-nav__brand {
@@ -94,12 +95,27 @@ a {
 .main-content {
 	margin-left: 240px;
 	padding: $gutter;
+	position: relative;
 
 	h1 {
 		margin-top: 0;
+		padding-right: 240px;
 	}
 }
 
+.item-filter {
+	border: none;
+	box-shadow: inset 0px 1px 2px #BBB;
+	color: #999;
+	font-size: 18px;
+	line-height: 20px;
+	margin: 0;
+	padding: 10px 20px;
+	position: absolute;
+	right: 20px;
+	top: 20px;
+	width: 220px;
+}
 
 // Util classes
 .center-align-wrp {
@@ -129,4 +145,5 @@ a {
 	padding: 10px 20px;
 	position: fixed;
 	right: 0;
+	z-index: 99;
 }

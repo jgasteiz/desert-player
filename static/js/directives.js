@@ -69,6 +69,15 @@ mplayer.app.directive('grid', function($location) {
 			scope.navigate = function(url, itemId) {
 				$location.path(url + '/' + itemId + '/');
 			};
+
+			scope.filterItems = function(itemName, searchString) {
+				if (searchString && searchString !== '') {
+					itemName = itemName.toLowerCase();
+					searchString = searchString.toLowerCase();
+					return itemName.indexOf(searchString) > -1;
+				}
+				return true;				
+			};
 		}
 	}
 });
@@ -84,6 +93,16 @@ mplayer.app.directive('list', function() {
 			isSelected: '=',
 			isPlaying: '='
 		},
-		templateUrl: 'static/templates/directives/list.html'
+		templateUrl: 'static/templates/directives/list.html',
+		link: function(scope) {
+			scope.filterItems = function(itemName, searchString) {
+				if (searchString && searchString !== '') {
+					itemName = itemName.toLowerCase();
+					searchString = searchString.toLowerCase();
+					return itemName.indexOf(searchString) > -1;
+				}
+				return true;				
+			};
+		}
 	}
 });

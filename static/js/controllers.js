@@ -7,6 +7,7 @@ mplayer.app.controller('AppCtrl', ['$scope', '$location', function($scope, $loca
 	$scope.trackOnPlay = null;
 	$scope.selectedTrack = null;
 	$scope.albumOnPlay = null;
+	$scope.searchString = '';
 
 	$scope.queue = [];
 
