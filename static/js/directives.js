@@ -64,6 +64,8 @@ mplayer.app.directive('videoPlayer', function($sce) {
 		templateUrl: 'static/templates/directives/video_player.html',
 		link: function(scope, element, attrs) {
 
+			var videoNode = null,
+				canPlay = null;
 			scope.videoUrl = '';
 
 			scope.playVideo = function() {
@@ -73,8 +75,8 @@ mplayer.app.directive('videoPlayer', function($sce) {
 					return false;
 				}
 
-				var videoNode = element.find('video')[0],
-					canPlay = videoNode.canPlayType(file.type);
+				videoNode = element.find('video')[0];
+				canPlay = videoNode.canPlayType(file.type);
 
 				if (canPlay !== '') {
 					scope.videoUrl = URL.createObjectURL(file);
@@ -83,6 +85,38 @@ mplayer.app.directive('videoPlayer', function($sce) {
 				} else {
 					scope.isLoaded = false;
 					scope.message = "The video can't be played.";
+				}
+			};
+
+			scope.goFullScreen = function() {
+				if (videoNode.requestFullscreen) {
+					videoNode.requestFullscreen();
+					scope.isFullScreen = true;
+				} else if (videoNode.msRequestFullscreen) {
+					videoNode.msRequestFullscreen();
+					scope.isFullScreen = true;
+				} else if (videoNode.mozRequestFullScreen) {
+					videoNode.mozRequestFullScreen();
+					scope.isFullScreen = true;
+				} else if (videoNode.webkitRequestFullscreen) {
+					videoNode.webkitRequestFullscreen();
+					scope.isFullScreen = true;
+				}
+			};
+
+			scope.exitFullScreen = function() {
+				if (document.exitFullscreen) {
+					document.exitFullscreen();
+					scope.isFullScreen = false;
+				} else if (document.msExitFullscreen) {
+					document.msExitFullscreen();
+					scope.isFullScreen = false;
+				} else if (document.mozCancelFullScreen) {
+					document.mozCancelFullScreen();
+					scope.isFullScreen = false;
+				} else if (document.webkitExitFullscreen) {
+					document.webkitExitFullscreen();
+					scope.isFullScreen = false;
 				}
 			};
 
