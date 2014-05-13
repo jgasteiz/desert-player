@@ -1,11 +1,12 @@
 <div class="video-player">
 	<div class="video-loader">
-		<input class="fileInput" type="file" accept="video/*"/>
+		<input id="video-file" type="file" accept="video/*"/>
+		<input id="srt-file" type="file" accept=".srt"/>
 		<button ng-click="playVideo()">Load video</button>
 	</div>
 	<div class="video-wrp">
 		<h1 ng-show="message">[[message]]</h1>
-		<video ng-src="[[trustSrc(videoUrl)]]"></video>		
+		<video id="video-player" ng-src="[[trustSrc(videoUrl)]]"></video>		
 	</div>
 	<div ng-show="isLoaded" class="video-player__controls">
 		<a ng-hide="isPlaying" ng-click="play()" class="video-player__play">Play</a>

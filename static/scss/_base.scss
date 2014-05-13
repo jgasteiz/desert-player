@@ -111,6 +111,7 @@ a {
 	}
 }
 
+// Text input for filtering results.
 .item-filter {
 	border: none;
 	box-shadow: inset 0px 1px 2px #BBB;
@@ -122,7 +123,7 @@ a {
 	position: absolute;
 	right: 20px;
 	top: 20px;
-	width: 220px;
+	width: 320px;
 }
 
 // Util classes

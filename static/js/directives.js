@@ -64,18 +64,21 @@ mplayer.app.directive('videoPlayer', function($sce) {
 		templateUrl: 'static/templates/directives/video_player.html',
 		link: function(scope, element, attrs) {
 
-			var videoNode = null,
-				canPlay = null;
+			var $videoEl = $(element).find('#video-player'),
+				videoNode = $videoEl[0],
+				canPlay = null,
+				$videoFile = $(element).find('#video-file'),
+				$srtFile = $(element).find('#srt-file');
+			
 			scope.videoUrl = '';
 
 			scope.playVideo = function() {
-				var file = element.find('input')[0].files[0];
+				var file = $videoFile[0].files[0];
 				if (!file) {
 					scope.message = "You have to pick a video first.";
 					return false;
 				}
 
-				videoNode = element.find('video')[0];
 				canPlay = videoNode.canPlayType(file.type);
 
 				if (canPlay !== '') {
@@ -124,7 +127,6 @@ mplayer.app.directive('videoPlayer', function($sce) {
 				return $sce.trustAsResourceUrl(src);
 			};
 
-			var $videoEl = element.find('video');
 			scope.isPlaying = false;
 
 			scope.play = function() {
