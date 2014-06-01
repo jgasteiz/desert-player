@@ -13,6 +13,14 @@ class TrackSerializer(serializers.ModelSerializer):
         fields = ('track_num', 'title', 'album', 'artist', 'src',)
 
 
+class VideoSerializer(serializers.ModelSerializer):
+    src = serializers.Field(source='get_src')
+
+    class Meta:
+        model = models.Video
+        fields = ('title', 'src',)
+
+
 class ArtistSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Artist

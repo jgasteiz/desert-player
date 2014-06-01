@@ -57,7 +57,7 @@ mplayer.app.directive('player', function() {
 	}
 });
 
-mplayer.app.directive('videoPlayer', function($sce) {
+mplayer.app.directive('videoPlayer', function($sce, $interval) {
 	return {
 		restrict: 'E',
 		scope: {},
@@ -67,12 +67,21 @@ mplayer.app.directive('videoPlayer', function($sce) {
 			var $videoEl = $(element).find('#video-player'),
 				videoNode = $videoEl[0],
 				canPlay = null,
+				progressInterval = null,
+				$currentTime = $(element).find('#current-time'),
 				$videoFile = $(element).find('#video-file'),
 				$srtFile = $(element).find('#srt-file');
-			
+
+			var stopProgress = function() {
+				if (angular.isDefined(progressInterval)) {
+					$interval.cancel(progressInterval);
+					progressInterval = undefined;
+				}
+			};
+
 			scope.videoUrl = '';
 
-			scope.playVideo = function() {
+			scope.loadVideo = function() {
 				var file = $videoFile[0].files[0];
 				if (!file) {
 					scope.message = "You have to pick a video first.";
@@ -137,11 +146,30 @@ mplayer.app.directive('videoPlayer', function($sce) {
 					$videoEl.off('ended').on('ended', function() {
 						scope.next({apply: true});
 					});
+					progressInterval = $interval(function() {
+						if (isNaN(videoNode.duration) === false) {
+							var currentProgress = (videoNode.currentTime / videoNode.duration) * 100;
+							$currentTime.css('left', currentProgress + '%');
+						}
+					}, 100);
 				}
+			};
+
+			scope.moveToTime = function(e) {
+				// Get the clicked time in percentage.
+				var $target = $(e.currentTarget),
+					targetWidth = $target.width(),
+					clickPosition = e.pageX - $target.offset().left,
+					clickedProgress = (clickPosition / targetWidth) * 100;
+
+				// Change the videoNode current time to the clicked percentage.
+				var newTime = (videoNode.duration * clickedProgress) / 100;
+				videoNode.currentTime = newTime;
 			};
 
 			scope.pause = function() {
 				if ($videoEl.attr('src')) {
+					stopProgress();
 					$videoEl[0].pause();
 					scope.isPlaying = false;
 				}
@@ -169,7 +197,7 @@ mplayer.app.directive('grid', function($location) {
 					searchString = searchString.toLowerCase();
 					return itemName.indexOf(searchString) > -1;
 				}
-				return true;				
+				return true;
 			};
 		}
 	}
@@ -194,7 +222,7 @@ mplayer.app.directive('list', function() {
 					searchString = searchString.toLowerCase();
 					return itemName.indexOf(searchString) > -1;
 				}
-				return true;				
+				return true;
 			};
 		}
 	}

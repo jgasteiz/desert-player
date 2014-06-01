@@ -11,6 +11,7 @@ router = routers.DefaultRouter()
 router.register(r'artists', api.ArtistsViewSet)
 router.register(r'albums', api.AlbumsViewSet)
 router.register(r'tracks', api.TracksViewSet)
+router.register(r'videos', api.VideosViewSet)
 
 
 urlpatterns = patterns('',

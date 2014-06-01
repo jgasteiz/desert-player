@@ -1,7 +1,7 @@
 from rest_framework import permissions
 from rest_framework import viewsets
 
-from .models import Track, Album, Artist
+from .models import Track, Album, Artist, Video
 from . import serializers
 
 
@@ -34,4 +34,12 @@ class TracksViewSet(viewsets.ModelViewSet):
     """
     queryset = Track.objects.all()
     serializer_class = serializers.TrackSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+
+
+class VideosViewSet(viewsets.ModelViewSet):
+    """
+    """
+    queryset = Video.objects.all()
+    serializer_class = serializers.VideoSerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)

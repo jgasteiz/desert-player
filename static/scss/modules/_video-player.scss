@@ -18,6 +18,19 @@
 	position: static;
 }
 
+.video-player__progress {
+	background: #666;
+	margin-bottom: 10px;
+	position: relative;
+}
+
+.video-player__current-time {
+	background-color: orange;
+	height: 10px;
+	position: relative;
+	width: 10px;
+}
+
 .video-player__play {
 	@extend %video-player-icon;
 	background-image: url(../sprites/play.png);

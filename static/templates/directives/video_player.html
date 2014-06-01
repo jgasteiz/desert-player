@@ -2,13 +2,16 @@
 	<div class="video-loader">
 		<input id="video-file" type="file" accept="video/*"/>
 		<input id="srt-file" type="file" accept=".srt"/>
-		<button ng-click="playVideo()">Load video</button>
+		<button ng-click="loadVideo()">Load video</button>
 	</div>
 	<div class="video-wrp">
 		<h1 ng-show="message">[[message]]</h1>
-		<video id="video-player" ng-src="[[trustSrc(videoUrl)]]"></video>		
+		<video id="video-player" ng-src="[[trustSrc(videoUrl)]]"></video>
 	</div>
 	<div ng-show="isLoaded" class="video-player__controls">
+		<div class="video-player__progress" ng-click="moveToTime($event)">
+			<div id="current-time" class="video-player__current-time"></div>
+		</div>
 		<a ng-hide="isPlaying" ng-click="play()" class="video-player__play">Play</a>
 		<a ng-show="isPlaying" ng-click="pause()" class="video-player__pause">Pause</a>
 		<a ng-hide="isFullscreen" ng-click="goFullScreen()" class="video-player__go-fullscreen">Go fullscreen</a>

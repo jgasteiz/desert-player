@@ -1,0 +1,6 @@
+<h1>[[title]]</h1>
+<ul>
+	<li ng-repeat="video in videos" ng-click="playVideo(video)">[[video.title]]</li>
+</ul>
+
+<video id="video-player" ng-src="[[trustSrc(videoUrl)]]" controls></video>

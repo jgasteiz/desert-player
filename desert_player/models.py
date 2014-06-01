@@ -38,3 +38,23 @@ class Track(models.Model):
 
     def get_src(self):
         return '%s%s' % (settings.MEDIA_URL, self.path)
+
+
+class TvShow(models.Model):
+    title = models.CharField(verbose_name='TV Show title', max_length=256)
+
+    def __unicode__(self):
+        return self.title
+
+
+class Video(models.Model):
+    title = models.CharField(verbose_name='Video title', max_length=256)
+    path = models.TextField(verbose_name='File path')
+
+    tv_show = models.ForeignKey('TvShow', blank=True, null=True)
+
+    def __unicode__(self):
+        return self.title
+
+    def get_src(self):
+        return '%s%s' % (settings.MEDIA_URL, self.path)
