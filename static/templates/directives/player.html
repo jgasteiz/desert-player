@@ -1,10 +1,15 @@
 <div class="player">
-	<div class="player__title">[[track.title]] - [[album.name]]</div>
-	<div class="player__controls">
-		<a class="player__previous" ng-click="previous()">Previous</a>
-		<a ng-hide="isPlaying" ng-click="play()" class="player__play">Play</a>
-		<a ng-show="isPlaying" ng-click="pause()" class="player__pause">Pause</a>
-		<a class="player__next" ng-click="next()">Next</a>
-	</div>
-	<audio src="[[track.src]]"></audio>
+    <div class="track-progress-wrp" ng-click="moveToTime($event)">
+        <div id="track-progress" class="track-progress">
+            <div id="track-progress-circle" class="track-progress__circle"></div>
+        </div>
+    </div>
+    <div class="player__title">[[track.title]] - [[album.name]]</div>
+    <div class="player__controls">
+        <a class="player__previous" ng-click="previous()">Previous</a>
+        <a ng-hide="isPlaying" ng-click="play()" class="player__play">Play</a>
+        <a ng-show="isPlaying" ng-click="pause()" class="player__pause">Pause</a>
+        <a class="player__next" ng-click="next()">Next</a>
+    </div>
+    <audio src="[[track.src]]"></audio>
 </div>

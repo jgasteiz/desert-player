@@ -1,30 +1,30 @@
 <div class="track-list-wrp">
-	<input type="text" class="item-filter" ng-model="queryString">
-	<ul class="track-list">
-		<li class="track-list__track"
-			ng-class="{'is-playing': isPlaying === track, 'is-selected': isSelected === track}"
-			ng-repeat="track in tracks"
-			ng-click="onClick({track: track, album: album})"
-			ng-show="filterItems(track.title, queryString)"
-			ng-dblclick="onDblClick({track: track, album: album})">
-			<div class="grid">
-				<div class="grid__item one-twelfth">
-					[[track.track_num]]
-				</div><!--
-				--><div class="grid__item one-quarter">
-					[[track.title]]
-				</div><!--
-				--><div class="grid__item one-quarter">
-					[[track.artist]]
-				</div><!--
-				--><div class="grid__item one-quarter">
-					[[track.album]]
-				</div><!--
-				--><div class="grid__item one-sixth">
-					`track duration`
-				</div>
-			</div>
-		</li>
-	</ul>
+    <input type="text" class="item-filter" ng-model="queryString">
+    <ul class="track-list">
+        <li class="track-list__track"
+            ng-class="{'is-playing': isPlaying === track, 'is-selected': isSelected === track}"
+            ng-repeat="track in tracks"
+            ng-click="onClick({track: track, album: album})"
+            ng-show="filterItems(track.title, queryString)"
+            ng-dblclick="onDblClick({track: track, album: album})">
+            <div class="grid">
+                <div class="grid__item one-twelfth">
+                    [[track.track_num]]
+                </div><!--
+                --><div class="grid__item one-quarter">
+                    [[track.title]]
+                </div><!--
+                --><div class="grid__item one-quarter">
+                    [[track.artist]]
+                </div><!--
+                --><div class="grid__item one-quarter">
+                    [[track.album]]
+                </div><!--
+                --><div class="grid__item one-sixth">
+                    `track duration`
+                </div>
+            </div>
+        </li>
+    </ul>
 
 </div>

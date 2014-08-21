@@ -1,12 +1,12 @@
 <div class="grid-list-wrp">
-	<input type="text" class="item-filter" ng-model="queryString">
-	<ul class="grid-list">
-		<li class="grid-list__item-wrp" ng-repeat="item in items" ng-show="filterItems(item.name, queryString)">
-			<div class="grid-list__item center-align-wrp" ng-click="navigate(url, item.id)">
-				<div class="center-align">
-					<span class="grid-list__item-title" >{{ item.name }}</span>
-				</div>
-			</div>
-		</li>
-	</ul>
+    <input type="text" class="item-filter" ng-model="queryString">
+    <ul class="grid-list">
+        <li class="grid-list__item-wrp" ng-repeat="item in items" ng-show="filterItems(item.name, queryString)">
+            <div class="grid-list__item center-align-wrp" ng-click="navigate(url, item.id)">
+                <div class="center-align">
+                    <span class="grid-list__item-title" >{{ item.name }}</span>
+                </div>
+            </div>
+        </li>
+    </ul>
 </div>
