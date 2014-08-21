@@ -1,4 +1,4 @@
-mplayer.app.directive('player', function() {
+mplayer.app.directive('player', function($interval) {
     return {
         restrict: 'E',
         scope: {
@@ -7,27 +7,57 @@ mplayer.app.directive('player', function() {
             queue: '='
         },
         templateUrl: 'static/templates/directives/player.html',
-        link: function(scope, element, attrs) {
+        link: function(scope, element) {
 
-            var $audioEl = element.find('audio');
+            var $audioEl = element.find('audio'),
+                audioNode = $audioEl[0],
+                $progress = $(element).find('#track-progress'),
+                progressInterval = null;
+
+            var stopProgress = function() {
+                if (angular.isDefined(progressInterval)) {
+                    $interval.cancel(progressInterval);
+                    progressInterval = undefined;
+                }
+            };
+
             scope.isPlaying = false;
 
             scope.play = function() {
                 if ($audioEl.attr('src')) {
-                    $audioEl[0].play();
+                    audioNode.play();
                     scope.isPlaying = true;
 
                     $audioEl.off('ended').on('ended', function() {
                         scope.next({apply: true});
                     });
                 }
+                progressInterval = $interval(function() {
+                    if (isNaN(audioNode.duration) === false) {
+                        var currentProgress = 100 - (audioNode.currentTime / audioNode.duration) * 100;
+                        $progress.css('right', currentProgress + '%');
+                    }
+                }, 100);
             };
 
             scope.pause = function() {
                 if ($audioEl.attr('src')) {
-                    $audioEl[0].pause();
+                    stopProgress();
+                    audioNode.pause();
                     scope.isPlaying = false;
                 }
+            };
+
+            // TODO: make this work
+            scope.moveToTime = function(e) {
+                // Get the clicked time in percentage.
+                var $target = $(e.currentTarget),
+                    targetWidth = $target.width(),
+                    clickPosition = e.pageX - $target.offset().left,
+                    clickedProgress = (clickPosition / targetWidth) * 100;
+
+                // Change the audioNode current time to the clicked percentage.
+                audioNode.currentTime = (audioNode.duration * clickedProgress) / 100;
             };
 
             // TODO: make this better. This is horrible.
@@ -163,8 +193,7 @@ mplayer.app.directive('videoPlayer', function($sce, $interval) {
                     clickedProgress = (clickPosition / targetWidth) * 100;
 
                 // Change the videoNode current time to the clicked percentage.
-                var newTime = (videoNode.duration * clickedProgress) / 100;
-                videoNode.currentTime = newTime;
+                videoNode.currentTime = (videoNode.duration * clickedProgress) / 100;
             };
 
             scope.pause = function() {

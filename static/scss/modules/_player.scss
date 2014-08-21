@@ -6,6 +6,31 @@
 	}
 }
 
+.track-progress-wrp {
+	height: 6px;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: -3px;
+}
+
+.track-progress {
+	background-color: #1CAAAF;
+	height: 100%;
+	left: 0;
+	position: absolute;
+}
+
+.track-progress__circle {
+	background-color: #1CAAAF;
+	border-radius: 50%;
+	height: 15px;
+	position: absolute;
+	right: -7px;
+	top: -5px;
+	width: 15px;
+}
+
 %player-icon {
 	display: inline-block;
 	opacity: 0.6;
