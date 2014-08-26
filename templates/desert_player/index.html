@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width">
 
     <link rel="stylesheet" href="{% static 'libs/mediaelement/build/mediaelementplayer.css' %}">
+    <link rel="stylesheet" href="{% static 'libs/bootstrap/dist/css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
 </head>
 <body ng-app="musicPlayer" ng-controller="AppCtrl" ng-class="{'video-mode': videoMode}">
@@ -46,12 +47,19 @@
 
     {# Libs #}
     <script src="{% static 'libs/jquery/dist/jquery.js' %}"></script>
-    <script src="{% static 'libs/mediaelement/build/mediaelement-and-player.js' %}"></script>
     <script src="{% static 'libs/angular/angular.js' %}"></script>
+
+    <script src="{% static 'libs/mediaelement/build/mediaelement-and-player.js' %}"></script>
     <script src="{% static 'libs/angular-route/angular-route.js' %}"></script>
     <script src="{% static 'libs/angular-resource/angular-resource.js' %}"></script>
+    <script src="{% static 'libs/angular-animate/angular-animate.js' %}"></script>
+    <script src="{% static 'libs/angular-bootstrap/ui-bootstrap-tpls.js' %}"></script>
 
     <script src="{% static 'js/app.js' %}"></script>
+
+    {# Services #}
+    <script src="{% static 'js/services/audioService.js' %}"></script>
+    <script src="{% static 'js/services/dialogService.js' %}"></script>
 
     {# Controllers #}
     <script src="{% static 'js/controllers/appCtrl.js' %}"></script>
@@ -70,7 +78,5 @@
     <script src="{% static 'js/directives/player.js' %}"></script>
     <script src="{% static 'js/directives/video-player.js' %}"></script>
 
-    {# Services #}
-    <script src="{% static 'js/services/audioService.js' %}"></script>
 </body>
 </html>

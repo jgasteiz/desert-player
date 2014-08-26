@@ -1,6 +1,7 @@
-var mplayer = {};
+var mplayer = mplayer || {};
 
-mplayer.app = angular.module("musicPlayer", ['ngRoute', 'ngResource'], function($interpolateProvider) {
+mplayer.app = angular.module("musicPlayer",
+    ['ui.bootstrap', 'ngAnimate', 'ngRoute', 'ngResource'], function($interpolateProvider) {
     $interpolateProvider.startSymbol('[[');
     $interpolateProvider.endSymbol(']]');
 });

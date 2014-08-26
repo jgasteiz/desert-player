@@ -1,4 +1,6 @@
-mplayer.app.controller('AppCtrl', ['$scope', '$location', function($scope, $location) {
+var mplayer = mplayer || {};
+
+mplayer.app.controller('AppCtrl', ['$scope', '$location', 'dialogService', function($scope, $location, dialogService) {
     $scope.isActive = function(route) {
         var locationPath = $location.path();
 
@@ -41,6 +43,10 @@ mplayer.app.controller('AppCtrl', ['$scope', '$location', function($scope, $loca
         } else {
             $scope.selectedAlbum = null;
         }
+    };
+
+    $scope.showOptions = function() {
+        dialogService.showDialog();
     };
 
     $scope.$watch('trackOnPlay', function(newValue, oldValue) {
