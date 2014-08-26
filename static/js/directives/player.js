@@ -1,3 +1,5 @@
+var mplayer = mplayer || {};
+
 mplayer.app.directive('player', function($interval) {
     return {
         restrict: 'E',

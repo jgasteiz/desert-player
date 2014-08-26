@@ -1,3 +1,5 @@
+var mplayer = mplayer || {};
+
 mplayer.app.directive('list', function() {
     return {
         restrict: 'E',
@@ -6,6 +8,7 @@ mplayer.app.directive('list', function() {
             album: '=',
             onClick: '&',
             onDblClick: '&',
+            onOptionsClick: '&',
             isSelected: '=',
             isPlaying: '='
         },

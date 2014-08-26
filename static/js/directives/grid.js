@@ -1,3 +1,5 @@
+var mplayer = mplayer || {};
+
 mplayer.app.directive('grid', function($location) {
     return {
         restrict: 'E',

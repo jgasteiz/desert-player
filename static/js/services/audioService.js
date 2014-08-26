@@ -1,3 +1,5 @@
+var mplayer = mplayer || {};
+
 mplayer.app.service('AudioService', ['$resource', function($resource) {
     return {
         Tracks: $resource('/_api/tracks/'),

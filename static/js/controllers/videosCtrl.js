@@ -1,3 +1,5 @@
+var mplayer = mplayer || {};
+
 mplayer.app.controller('VideosCtrl', ['$scope', '$sce', 'AudioService', function($scope, $sce, AudioService) {
     $scope.title = 'All videos';
     $scope.videos = AudioService.Videos.query();
