@@ -46,7 +46,10 @@ mplayer.app.controller('AppCtrl', ['$scope', '$location', 'dialogService', funct
     };
 
     $scope.showOptions = function() {
-        dialogService.showDialog();
+        dialogService.showDialog({
+            modalTitle: 'The title',
+            modalBody: 'The body'
+        });
     };
 
     $scope.$watch('trackOnPlay', function(newValue, oldValue) {

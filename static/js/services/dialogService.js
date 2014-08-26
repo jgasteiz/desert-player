@@ -2,7 +2,6 @@ var mplayer = mplayer || {};
 
 mplayer.app.service('dialogService', ['$modal', function($modal) {
     var dialogDefaults = {
-        backdrop: false,
         keyboard: true,
         templateUrl: 'static/templates/services/dialog-service.html'
     };
@@ -31,14 +30,12 @@ mplayer.app.service('dialogService', ['$modal', function($modal) {
         angular.extend(tempDialogOptions, dialogOptions, customDialogOptions);
 
         if (!tempDialogDefaults.controller) {
-            tempDialogDefaults.controller = function ($scope, $modalInstance, items) {
-                $scope.items = items;
-                $scope.selected = {
-                    item: $scope.items[0]
-                };
+            tempDialogDefaults.controller = function ($scope, $modalInstance, modalTitle, modalBody) {
+                $scope.modalTitle = modalTitle;
+                $scope.modalBody = modalBody;
 
                 $scope.ok = function () {
-                    $modalInstance.close($scope.selected.item);
+                    $modalInstance.close();
                 };
 
                 $scope.cancel = function () {
@@ -48,8 +45,11 @@ mplayer.app.service('dialogService', ['$modal', function($modal) {
         }
 
         tempDialogDefaults.resolve = {
-            items: function () {
-                return [];
+            modalTitle: function () {
+                return customDialogDefaults.modalTitle || 'modalTitle';
+            },
+            modalBody: function () {
+                return customDialogDefaults.modalBody || 'modalBody';
             }
         };
 

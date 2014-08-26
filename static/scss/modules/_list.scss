@@ -15,6 +15,10 @@
 	display: block;
 	padding: 10px $gutter;
 
+	a {
+		color: #2A6496;
+	}
+
 	&.is-selected,
 	&:hover {
 		background-color: #f2f2f2;
