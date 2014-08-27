@@ -1,6 +1,8 @@
 var mplayer = mplayer || {};
 
-mplayer.app.controller('AppCtrl', ['$scope', '$location', 'dialogService', function($scope, $location, dialogService) {
+mplayer.app.controller('AppCtrl', ['$scope', '$location', 'dialogService', 'contextMenuService',
+function($scope, $location, dialogService, contextMenuService) {
+
     $scope.isActive = function(route) {
         var locationPath = $location.path();
 
@@ -45,10 +47,14 @@ mplayer.app.controller('AppCtrl', ['$scope', '$location', 'dialogService', funct
         }
     };
 
-    $scope.showOptions = function() {
-        dialogService.showDialog({
-            modalTitle: 'The title',
-            modalBody: 'The body'
+    $scope.showOptions = function(event) {
+        contextMenuService.showMenu({
+            options: {
+                'Add to queue': function() {
+                    console.log('Add to queue!');
+                }
+            },
+            element: event.currentTarget
         });
     };
 

@@ -6,13 +6,6 @@ mplayer.app.service('dialogService', ['$modal', function($modal) {
         templateUrl: 'static/templates/services/dialog-service.html'
     };
 
-    var dialogOptions = {
-        closeButtonText: 'Close',
-        actionButtonText: 'OK',
-        headerText: 'Proceed?',
-        bodyText: 'Perform this action?'
-    };
-
     this.showModalDialog = function (customDialogDefaults, customDialogOptions) {
         if (!customDialogDefaults) customDialogDefaults = {};
         this.showDialog(customDialogDefaults, customDialogOptions);
@@ -25,9 +18,6 @@ mplayer.app.service('dialogService', ['$modal', function($modal) {
 
         //Map angular-ui dialog custom defaults to dialog defaults defined in this service
         angular.extend(tempDialogDefaults, dialogDefaults, customDialogDefaults);
-
-        //Map dialog.html $scope custom properties to defaults defined in this service
-        angular.extend(tempDialogOptions, dialogOptions, customDialogOptions);
 
         if (!tempDialogDefaults.controller) {
             tempDialogDefaults.controller = function ($scope, $modalInstance, modalTitle, modalBody) {
