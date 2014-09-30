@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from rest_framework import permissions
 from rest_framework import viewsets
 
@@ -33,8 +34,18 @@ class TracksViewSet(viewsets.ModelViewSet):
     """
     """
     queryset = Track.objects.all()
+    model = Track
     serializer_class = serializers.TrackSerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+
+    def get_queryset(self):
+        if 'paginateBy' in self.request.GET:
+            paginate_by = self.request.GET.get('paginateBy')
+            page = self.request.GET.get('page', 1)
+            tracks = self.model.objects.all()
+            p = Paginator(tracks, paginate_by)
+            return p.page(page)
+        return super(TracksViewSet, self).get_queryset()
 
 
 class VideosViewSet(viewsets.ModelViewSet):
